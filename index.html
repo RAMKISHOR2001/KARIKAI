@@ -24,10 +24,32 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="hero-content">
-            <h1>Premium Tote Bags for Every Occasion</h1>
-            <p>Sustainable, stylish, and durable tote bags crafted with care</p>
-            <a href="products.html" class="cta-btn">Shop Now</a>
+        <div class="hero-background">
+            <div class="decorative-element deco-1"></div>
+            <div class="decorative-element deco-2"></div>
+            <div class="decorative-element deco-3"></div>
+            <div class="decorative-element deco-4"></div>
+            <div class="decorative-element deco-5"></div>
+        </div>
+        
+        <div class="hero-container">
+            <div class="hero-products">
+                <div class="product-card product-card-left">
+                    <img src="images/bag1/image1.jpg" alt="Hand-Painted Tote Bag">
+                </div>
+            </div>
+            
+            <div class="hero-content">
+                <h1>Let's Shop the<br><span class="highlight">Karikai Collection</span></h1>
+                <p>Hand-painted & more</p>
+                <a href="products.html" class="cta-btn">Shop Now</a>
+            </div>
+            
+            <div class="hero-products">
+                <div class="product-card product-card-right">
+                    <img src="images/bag1/image2.jpg" alt="Hand-Painted Tote Bag">
+                </div>
+            </div>
         </div>
     </section>
 
@@ -132,10 +154,13 @@
                         <div class="product-image">
                             <img src="${product.image1}" alt="${product.name}">
                         </div>
-                        <h3>${product.name}</h3>
-                        <p class="price">₹${product.price}</p>
-                        <p class="description">${product.description}</p>
-                        <button class="btn-primary">View Details</button>
+                        <div class="product-info">
+                            <h3>${product.name}</h3>
+                            <p class="description">${product.description}</p>
+                            <div class="rating">⭐⭐⭐⭐☆</div>
+                            <p class="price">₹${product.price}</p>
+                            <button class="btn-primary">View Details</button>
+                        </div>
                     `;
                     featuredGrid.appendChild(productCard);
                 });

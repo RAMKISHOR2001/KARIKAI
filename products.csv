@@ -1,5 +1,5 @@
 id,name,price,image1,image2,image3,image4,description,type
-1,Classic Canvas Tote,349,images/bag1/image1.jpg,images/bag1/image2.jpg,images/bag1/image3.jpg,images/bag1/image4.jpg,Handpainted abc,canvas
+1,Classic Canvas Tote,349,images/bag1/image1.jpg,images/bag1/image2.jpg,images/bag1/image3.jpg,images/bag1/image4.jpg,Handpainted,canvas
 2,Eco-Friendly Organic Cotton Tote,399,images/bag1/image1.jpg,images/bag1/image2.jpg,images/bag1/image3.jpg,images/bag1/image4.jpg,100% organic cotton - sustainable and eco-conscious,eco-friendly
 3,Premium Leather Tote,699,images/bag1/image1.jpg,images/bag1/image2.jpg,images/bag1/image3.jpg,images/bag1/image4.jpg,Genuine leather with luxurious finish,leather
 4,Designer Pattern Tote,499,images/bag1/image1.jpg,images/bag1/image2.jpg,images/bag1/image3.jpg,images/bag1/image4.jpg,Unique patterns and bold designs,designer
