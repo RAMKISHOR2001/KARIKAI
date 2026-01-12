@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products - Karikai</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="container">
+        <div class="navbar-brand">
+            <img src="images/logo.png" alt="Karikai Logo" class="navbar-logo">
+            <h1>Karikai</h1>
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html" class="active">Products</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- HEADER -->
+<section class="page-header">
+    <div class="container">
+        <h1>Our Products</h1>
+        <p>Discover our complete collection of premium tote bags</p>
+    </div>
+</section>
+
+<!-- FILTER -->
+<section class="filters">
+    <div class="container">
+        <label>Filter by Type:</label>
+        <select id="typeFilter">
+            <option value="">All Types</option>
+            <option value="canvas">Canvas</option>
+            <option value="leather">Leather</option>
+            <option value="eco-friendly">Eco-Friendly</option>
+            <option value="designer">Designer</option>
+        </select>
+    </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="products-section">
+    <div class="container">
+        <div class="products-grid" id="productsGrid"></div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2026 Karikai. All rights reserved.</p>
+    </div>
+</footer>
+
+<!-- SCRIPT -->
+<script>
+    var allProducts = [];
+
+    // LOAD CSV
+    fetch("products.csv")
+        .then(function (res) {
+            return res.text();
+        })
+        .then(function (text) {
+            allProducts = parseCSV(text);
+            renderProducts(allProducts);
+        });
+
+    // 🔥 BULLETPROOF CSV PARSER (BOM + commas fixed)
+    function parseCSV(text) {
+        var rows = [];
+        var row = [];
+        var value = '';
+        var insideQuotes = false;
+
+        for (var i = 0; i < text.length; i++) {
+            var char = text[i];
+            var next = text[i + 1];
+
+            if (char === '"' && insideQuotes && next === '"') {
+                value += '"';
+                i++;
+            } else if (char === '"') {
+                insideQuotes = !insideQuotes;
+            } else if (char === ',' && !insideQuotes) {
+                row.push(value);
+                value = '';
+            } else if (char === '\n' && !insideQuotes) {
+                row.push(value);
+                rows.push(row);
+                row = [];
+                value = '';
+            } else {
+                value += char;
+            }
+        }
+
+        row.push(value);
+        rows.push(row);
+
+        // 🔥 CLEAN HEADERS (BOM + spaces removed)
+        var headers = rows[0].map(function (h) {
+            return h.replace(/^\uFEFF/, '').trim();
+        });
+
+        return rows.slice(1).map(function (r) {
+            var obj = {};
+            headers.forEach(function (h, i) {
+                obj[h] = r[i] ? r[i].trim() : '';
+            });
+
+            obj.id = Number(obj.id);
+            obj.price = Number(obj.price);
+
+            return obj;
+        });
+    }
+
+    // RENDER PRODUCTS
+    function renderProducts(products) {
+        var grid = document.getElementById("productsGrid");
+        grid.innerHTML = "";
+
+        products.forEach(function (product) {
+            var card = document.createElement("div");
+            card.className = "product-card";
+            card.style.cursor = "pointer";
+
+            card.onclick = function () {
+                window.location.href = "product.html?id=" + product.id;
+            };
+
+            card.innerHTML =
+                '<div class="product-image">' +
+                    '<img src="' + product.image1 + '" alt="' + product.name + '">' +
+                '</div>' +
+                '<div class="product-info">' +
+                    '<h3>' + product.name + '</h3>' +
+                    '<p class="description">' + product.description + '</p>' +
+                    '<div class="rating">⭐⭐⭐⭐☆</div>' +
+                    '<p class="price">₹' + product.price + '</p>' +
+                    '<button class="btn-primary">View Details</button>' +
+                '</div>';
+
+            grid.appendChild(card);
+        });
+    }
+
+    // FILTER
+    document.getElementById("typeFilter").addEventListener("change", function (e) {
+        var type = e.target.value;
+        var filtered = type
+            ? allProducts.filter(function (p) { return p.type === type; })
+            : allProducts;
+
+        renderProducts(filtered);
+    });
+</script>
+
+</body>
+</html>
+  

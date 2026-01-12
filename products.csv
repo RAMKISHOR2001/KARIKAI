@@ -1,0 +1,13 @@
+id,name,price,image1,image2,image3,image4,description,type
+1,Classic Canvas Tote,349,images/bag1/image1.jpg,images/bag1/image2.jpg,images/bag1/image3.jpg,images/bag1/image4.jpg,Handpainted abc,canvas
+2,Eco-Friendly Organic Cotton Tote,399,images/bag1/image1.jpg,images/bag1/image2.jpg,images/bag1/image3.jpg,images/bag1/image4.jpg,100% organic cotton - sustainable and eco-conscious,eco-friendly
+3,Premium Leather Tote,699,images/bag1/image1.jpg,images/bag1/image2.jpg,images/bag1/image3.jpg,images/bag1/image4.jpg,Genuine leather with luxurious finish,leather
+4,Designer Pattern Tote,499,images/bag1/image1.jpg,images/bag1/image2.jpg,images/bag1/image3.jpg,images/bag1/image4.jpg,Unique patterns and bold designs,designer
+5,Minimalist Black Canvas,319,images/bag1/image1.jpg,images/bag1/image2.jpg,images/bag1/image3.jpg,images/bag1/image4.jpg,Simple elegant black canvas tote,canvas
+6,Sustainable Canvas Blend,379,images/bag1/image1.jpg,images/bag1/image2.jpg,images/bag1/image3.jpg,images/bag1/image4.jpg,Canvas and recycled materials blend,eco-friendly
+7,Structured Business Tote,599,images/bag1/image1.jpg,images/bag1/image2.jpg,images/bag1/image3.jpg,images/bag1/image4.jpg,Professional structured tote for work,leather
+8,Colorful Beach Tote,299,images/bag1/image1.jpg,images/bag1/image2.jpg,images/bag1/image3.jpg,images/bag1/image4.jpg,Vibrant waterproof beach tote,canvas
+9,Heritage Woven Tote,549,images/bag1/image1.jpg,images/bag1/image2.jpg,images/bag1/image3.jpg,images/bag1/image4.jpg,Traditional weaving techniques,designer
+10,Heritage Woven Tote,549,images/bag1/image1.jpg,images/bag1/image2.jpg,images/bag1/image3.jpg,images/bag1/image4.jpg,Traditional weaving techniques,designer
+11,Heritage Woven Tote,549,images/bag1/image1.jpg,images/bag1/image2.jpg,images/bag1/image3.jpg,images/bag1/image4.jpg,Traditional weaving techniques,designer
+12,Everyday Essential Tote,369,images/bag1/image1.jpg,images/bag1/image2.jpg,images/bag1/image3.jpg,images/bag1/image4.jpg,Perfect for daily use and shopping,canvas

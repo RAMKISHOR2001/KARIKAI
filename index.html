@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karikai - Hand-Painted Tote Bags</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <img src="images/logo.png" alt="Karikai Logo" class="navbar-logo">
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Premium Tote Bags for Every Occasion</h1>
+            <p>Sustainable, stylish, and durable tote bags crafted with care</p>
+            <a href="products.html" class="cta-btn">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured">
+        <div class="container">
+            <h2>Featured Collections</h2>
+            <div class="products-grid" id="featuredProducts">
+                <!-- Products loaded dynamically from CSV -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="why-us">
+        <div class="container">
+            <h2>Why Choose Karikai?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <h3>🌿 Eco-Friendly</h3>
+                    <p>We use sustainable materials and environmentally conscious manufacturing processes</p>
+                </div>
+                <div class="feature">
+                    <h3>💪 Durable</h3>
+                    <p>Built to last with reinforced stitching and premium quality materials</p>
+                </div>
+                <div class="feature">
+                    <h3>🎨 Stylish Designs</h3>
+                    <p>Contemporary designs that work for any occasion, from casual to professional</p>
+                </div>
+                <div class="feature">
+                    <h3>💳 Affordable Prices</h3>
+                    <p>Premium quality at competitive prices without breaking the bank</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Stay Updated</h2>
+            <p>Get exclusive deals and new collection updates</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit" class="btn-primary">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Karikai</h4>
+                    <p>Hand-painted tote bags by fine arts students from Mumbai.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="products.html">Products</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Twitter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Karikai. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Load featured products from CSV
+        fetch("products.csv")
+            .then(res => res.text())
+            .then(text => {
+                const rows = text.trim().split("\n");
+                const headers = rows.shift().split(",");
+                const products = rows.map(r => {
+                    const v = r.split(",");
+                    return Object.fromEntries(headers.map((h, i) => [h, v[i]]));
+                });
+
+                // Display first 3 products as featured
+                const featuredGrid = document.getElementById('featuredProducts');
+                products.slice(0, 3).forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.className = 'product-card';
+                    productCard.style.cursor = 'pointer';
+                    productCard.onclick = () => window.location.href = `product.html?id=${product.id}`;
+                    productCard.innerHTML = `
+                        <div class="product-image">
+                            <img src="${product.image1}" alt="${product.name}">
+                        </div>
+                        <h3>${product.name}</h3>
+                        <p class="price">₹${product.price}</p>
+                        <p class="description">${product.description}</p>
+                        <button class="btn-primary">View Details</button>
+                    `;
+                    featuredGrid.appendChild(productCard);
+                });
+            });
+    </script>
+</body>
+</html>
